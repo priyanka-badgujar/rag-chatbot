@@ -38,10 +38,10 @@ pip install -r requirements.txt
 
 1. Clone the repository.
 2. Install dependencies.
-3. Replace the placeholder OpenAI API key in `ragchatbot.py` with your actual key, or update the app to load it from an environment variable.
+3. Set the `OPENAI_API_KEY` environment variable with your actual OpenAI API key.
 
-```python
-OPENAI_API_KEY = "pb-xxxxxx"
+```bash
+export OPENAI_API_KEY="your-api-key-here"
 ```
 
 ## Run
@@ -54,6 +54,10 @@ streamlit run ragchatbot.py
 
 Then open the URL shown in the terminal.
 
+## Live Demo
+
+A live version of this application is deployed on Streamlit Cloud: [https://rag-chatbot-m3opxhtptyr96qodbrbk5w.streamlit.app/](https://rag-chatbot-m3opxhtptyr96qodbrbk5w.streamlit.app/)
+
 ## Usage
 
 1. Upload a PDF file using the sidebar.
@@ -63,7 +67,7 @@ Then open the URL shown in the terminal.
 ## Notes
 
 - The current implementation stores embeddings in memory only, so re-uploading or restarting the app rebuilds the FAISS index.
-- For production use, consider securing the OpenAI API key and avoiding hardcoded credentials in source code.
+- The OpenAI API key is securely loaded from environment variables for production use.
 
 ## Project Structure
 
