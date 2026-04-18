@@ -1,5 +1,6 @@
 import streamlit as st
 import pdfplumber
+import os
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
@@ -7,7 +8,10 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
-OPENAI_API_KEY = "pb-xxxxxx"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    st.error("Please set the OPENAI_API_KEY environment variable.")
+    st.stop()
 
 st.header("My First Chatbot")
 with st.sidebar:
